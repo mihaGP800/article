@@ -1,0 +1,20 @@
+@use 'sass:math';
+
+@function prc($pxOne, $psTwo) {
+  $result: math.div($pxOne, $psTwo) * 100%;
+  @return $result
+}
+
+@function rem($px) {
+  $result: math.div($px, 16) + rem;
+  @return $result
+}
+
+@function em($px) {
+  $result: math.div($px, 16) + em;
+  @return $result
+}
+
+
+
+

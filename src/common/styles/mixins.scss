@@ -1,0 +1,52 @@
+@import 'src/common/styles/variables';
+
+
+@mixin text($color, $fontWeight,
+ $lineHeight, $fontSize, $textTransform) {
+  color: $color;
+  font-family: jost, sans-serif;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+  font-size: $fontSize;
+  text-transform: $textTransform;
+}
+
+@mixin flex($flexDirection, $justifyContent, $alignItems, $flexWrap) {
+  display: flex;
+  flex-direction: $flexDirection;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  flex-wrap: $flexWrap;
+}
+
+@mixin bgSettings() {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin adaptive-value($property, $startSize, $minSize, $type) {
+  $addSize: $startSize - $minSize;
+  @if $type == 1 {
+    #{$property}: $startSize + px;
+    @media (max-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}))
+    }
+  } @else if $type == 2 {
+    #{$property}: $startSize + px;
+    @media (max-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}))
+    }
+  } @else {
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}))
+  }
+}
+
+//example without mixin
+@media (max-width: 1200px) {
+  .block {
+    font-size: calc(20px + (50 - 20) * ((100vw - 320px) / (1200 - 320)));
+  }
+}
+
+
