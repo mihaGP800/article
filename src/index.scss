@@ -5,19 +5,20 @@
 
 
 body {
-  background-color: $dgPrimary;
+  background-color: $bgPrimary;
   font-size: rem(18);
   font-family: $fontFamily;
+  color: $mainColor;
 }
 
 
-[className*='containerInternal'] {
+[class*='_containerInternal'] {
   max-width: rem(1420);
   margin: 0 auto;
 }
 
 @if ($responsiveType == 1) {
-  [className*='container'] {
+  [class*='_container'] {
     @if ($maxWidthContainer > 0) {
       max-width: rem($maxWidthContainer);
       box-sizing: content-box;
@@ -28,7 +29,7 @@ body {
     }
   }
 } @else {
-  [className*='container'] {
+  [class*='_container'] {
     margin: 0 auto;
     @if ($maxWidthContainer > 0) {
       max-width: rem($maxWidthContainer);

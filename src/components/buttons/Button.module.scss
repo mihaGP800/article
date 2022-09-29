@@ -1,0 +1,42 @@
+@use 'sass:math';
+@import "src/common/styles/functions";
+@import "src/common/styles/variables";
+
+.button {
+  font-family: $fontFamilyLato;
+  font-weight: 500;
+  font-size: rem(18);
+  line-height: math.div(22, 18);
+  white-space: nowrap;
+  border-radius: rem(10);
+  display: inline-flex;
+  color: $mainColor;
+  background-color: $secondColor;
+  padding: rem(20) rem(24);
+  transition: all .3s ease 0s;
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: #1b8c1b;
+    }
+  }
+
+  &.buttonBorder {
+    background-color: transparent;
+    border: 1px solid #FFFFFF;
+    padding: rem(19) rem(40);
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $bgPrimary;
+        color: $secondColor;
+        border: 1px solid $secondColor;
+      }
+    }
+  }
+
+  @media (max-width: $tablet) {
+    padding: rem(14) rem(18);
+    &.buttonBorder {
+      padding: rem(13) rem(34);
+    }
+  }
+}

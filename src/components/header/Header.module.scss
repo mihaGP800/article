@@ -1,0 +1,131 @@
+@use 'sass:math';
+@import "src/common/styles/functions";
+@import "src/common/styles/variables";
+@import "src/common/styles/mixins";
+
+.header {
+  @include adaptive-value('padding-top', 60, 10, 0);
+  @include adaptive-value('padding-bottom', 60, 10, 0);
+  @media (max-width: $mobile) {
+    background-color: #172021;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .headerLogo {
+      img {
+        @include adaptive-value('max-width', 143, 110, 0)
+      }
+    }
+
+    .headerMenu {
+      flex: 1 1 auto;
+
+
+      .menuBody {
+        padding: 0 rem(8);
+
+        @media (max-width: $mobile) {
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          top: -100%;
+          left: 0;
+          display: flex;
+          flex-direction: column;
+          gap: rem(30);
+          align-items: center;
+          @include adaptive-value('padding-top', 190, 90, 0);
+          transition: all .7s ease 0s;
+          &.visible {
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+          }
+        }
+
+        .menuList {
+
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          row-gap: rem(10);
+          @include adaptive-value('column-gap', 44, 10, 0);
+          @media (max-width: $mobile) {
+            flex-direction: column;
+            align-items: center;
+            row-gap: rem(30);
+          }
+
+          .menuItem {
+            .menuLink {
+              color: $mainColor;
+              white-space: nowrap;
+              @media (max-width: $mobile) {
+                font-size: rem(40);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .headerButtons {
+      display: flex;
+      align-items: center;
+      //gap: rem(16);
+      margin: 0 rem(-16);
+
+      .column {
+        padding: 0 rem(16);
+      }
+
+      .burgerIcon {
+        display: none;
+        @media (max-width: $mobile) {
+          display: block;
+          position: relative;
+          width: rem(30);
+          height: rem(26);
+          background: inherit;
+          cursor: pointer;
+          border-top: rem(2) solid $mainColor;
+          border-bottom: rem(2) solid $mainColor;
+          &::before, &::after {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            content: '';
+            width: 100%;
+            height: rem(2);
+            background: $mainColor;
+            transition: all .7s ease 0s;
+          }
+          &.changed {
+            border: none;
+            &::before {
+              top: 50%;
+              left: 0;
+              transform: rotate(45deg);
+            }
+            &::after {
+              top: 50%;
+              left: 0;
+              transform: rotate(-45deg);
+            }
+          }
+        }
+      }
+
+      @media (max-width: $tablet) {
+        margin: 0 rem(-8);
+        .column {
+          padding: 0 rem(8);
+        }
+      }
+    }
+  }
+}

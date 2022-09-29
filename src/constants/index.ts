@@ -1,0 +1,1 @@
+export const SIZE_FOR_DYNAMIC_UI = 767.98

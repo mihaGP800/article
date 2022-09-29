@@ -5,8 +5,8 @@ $mainColor: #ffffff;
 //$primaryColor: #f75023;
 $secondColor: #23B123;
 //$thirdColor: #9ACD32;
-$dgPrimary: #263238;
-//$dgSecondary: #383b42;
+$bgPrimary: #263238;
+//$bgSecondary: #383b42;
 
 
 $fontFamily: 'League Spartan', sans-serif;
@@ -25,7 +25,8 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 
 $pc: em($containerWidth);
 $tablet: em(991.98);
-$mobile: em(767.98);
+//$mobile: em(767.98); //=== 816px
+$mobile: 767.98px;
 $mobileSmall: em(479.98);
 
 $responsiveType: 1 // 2 -- by breakPoints
